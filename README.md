@@ -6,163 +6,76 @@
 
 ## 🌱 Tentang SmartBin
 
-SmartBin adalah sistem monitoring kondisi tempat sampah berbasis Internet of Things (IoT) yang dirancang untuk membantu pemantauan tingkat kepenuhan dan lokasi tempat sampah secara berkala.
+SmartBin adalah sistem monitoring tempat sampah berbasis Internet of Things (IoT) yang menggunakan ESP32 DevKit, sensor ultrasonik waterproof JSN-SR04T, dan GPS NEO-6M untuk memantau tingkat kepenuhan dan lokasi tempat sampah.
 
-Sistem menggunakan ESP32 DevKit sebagai mikrokontroler, sensor ultrasonik waterproof JSN-SR04T untuk membaca jarak permukaan sampah, serta modul GPS NEO-6M untuk memperoleh koordinat lokasi tong fisik.
+Data dikirim melalui Wi-Fi dan HTTPS REST API, disimpan pada Supabase PostgreSQL, kemudian ditampilkan melalui dashboard berbasis web.
 
-Data hasil monitoring dikirim melalui jaringan Wi-Fi menggunakan HTTPS REST API dan disimpan pada Supabase PostgreSQL.
-
-SmartBin juga menerapkan Artificial Intelligence (AI) menggunakan metode clustering untuk mengelompokkan pola historis akumulasi kepenuhan sampah serta menyediakan dashboard monitoring, pelaporan warga melalui QR Code, riwayat pengangkutan, dan notifikasi pengangkutan.
+SmartBin juga menerapkan clustering untuk mengelompokkan pola historis akumulasi kepenuhan sampah.
 
 ---
 
 ## ✨ Fitur Utama
 
-🗑️ Monitoring tingkat kepenuhan tempat sampah
-📍 Monitoring koordinat lokasi tempat sampah
-📡 Pengiriman data IoT secara berkala
-🗺️ Peta persebaran titik monitoring
-🧠 Clustering pola akumulasi kepenuhan sampah
-📊 Dashboard monitoring berbasis web
-📱 Pelaporan warga melalui QR Code tanpa login
-📷 Upload foto bukti secara opsional
-📝 Riwayat dan status laporan warga
-🚛 Konfirmasi dan riwayat pengangkutan
-🔔 Notifikasi pengangkutan yang belum dikonfirmasi
-👥 Hak akses pengguna berdasarkan peran
+🗑️ Monitoring tingkat kepenuhan tempat sampah  
+📍 Monitoring lokasi tempat sampah  
+🗺️ Peta 9 titik monitoring: 1 fisik dan 8 virtual  
+🧠 Clustering pola akumulasi kepenuhan sampah  
+📱 Pelaporan warga melalui QR Code tanpa login  
+🚛 Konfirmasi dan riwayat pengangkutan  
+🔔 Notifikasi pengangkutan yang belum dikonfirmasi  
+👥 Hak akses berdasarkan peran  
 
 ---
 
 ## ⚙️ Cara Kerja
 
-🗑️ Tempat Sampah 50 L
-↓
-📏 JSN-SR04T + 📍 GPS NEO-6M
-↓
-⚙️ ESP32 DevKit
-↓
-📶 Wi-Fi
-↓
-🔗 HTTPS REST API
-↓
-🗄️ Supabase PostgreSQL
-↓
-🧠 Clustering
-↓
-📊 Dashboard SmartBin
-↓
-👥 Warga • Petugas Lapangan • Pengelola • Admin
+**Tempat Sampah 50 L**  
+↓  
+**JSN-SR04T + GPS NEO-6M**  
+↓  
+**ESP32 DevKit**  
+↓  
+**Wi-Fi + HTTPS REST API**  
+↓  
+**Supabase PostgreSQL**  
+↓  
+**Clustering**  
+↓  
+**Dashboard SmartBin**
 
-Sensor JSN-SR04T membaca jarak antara sensor dan permukaan sampah sebagai dasar perhitungan persentase tingkat kepenuhan.
-
-Modul GPS NEO-6M digunakan untuk memperoleh koordinat latitude dan longitude tong fisik.
-
-Riwayat tingkat kepenuhan yang tersimpan kemudian dapat digunakan untuk menganalisis pola akumulasi sampah menggunakan metode clustering.
-
----
-
-## 🔌 Perangkat IoT
-
-⚙️ **ESP32 DevKit**
-Berfungsi sebagai mikrokontroler utama untuk membaca data sensor, memproses data, menghubungkan perangkat ke Wi-Fi, dan mengirim data menuju backend.
-
-📏 **JSN-SR04T Waterproof Ultrasonic Sensor**
-Berfungsi mengukur jarak antara posisi sensor dan permukaan sampah. Nilai jarak digunakan sebagai dasar perhitungan persentase kepenuhan tong.
-
-📍 **GPS NEO-6M**
-Berfungsi memperoleh koordinat latitude dan longitude dari tempat sampah fisik.
-
-🗑️ **Tong Sampah 50 Liter**
-Digunakan sebagai prototipe fisik SmartBin untuk pemasangan perangkat IoT dan pengujian sistem.
-
-🔌 **Breadboard dan Kabel Jumper**
-Digunakan sebagai media perakitan dan penghubung antara ESP32 dengan sensor serta perangkat pendukung selama proses pengembangan dan pengujian.
+Sensor JSN-SR04T digunakan untuk membaca jarak permukaan sampah sebagai dasar perhitungan tingkat kepenuhan, sedangkan GPS NEO-6M digunakan untuk memperoleh koordinat tong fisik.
 
 ---
 
 ## 🧠 Artificial Intelligence
 
-SmartBin menggunakan metode clustering untuk mengelompokkan pola akumulasi kepenuhan sampah berdasarkan data historis.
+SmartBin menguji tiga algoritma clustering:
 
-Pada tahap pengembangan dilakukan pengujian terhadap tiga kandidat algoritma:
+🔵 **K-Means**  
+🟣 **K-Medoids**  
+🟠 **DBSCAN**
 
-🔵 K-Means
-🟣 K-Medoids
-🟠 DBSCAN
-
-Berdasarkan hasil evaluasi, K-Means dipilih sebagai algoritma utama karena menghasilkan pengelompokan yang stabil, seluruh data dapat dikelompokkan, dan hasil cluster mudah diinterpretasikan.
-
----
-
-## 🗑️ Titik Monitoring
-
-SmartBin memiliki 9 titik monitoring, terdiri dari:
-
-🟢 **1 tempat sampah fisik**
-Menggunakan ESP32 DevKit, sensor ultrasonik AJ-SR04M, dan GPS NEO-6M untuk memperoleh data monitoring secara langsung.
-
-🟠 **8 titik tempat sampah virtual**
-Menggunakan data simulasi untuk mendukung pengujian sistem, clustering, dan visualisasi dashboard.
-
-Data fisik dan data virtual dibedakan agar tidak tercampur dalam proses monitoring dan analisis.
+Berdasarkan hasil evaluasi, K-Means dipilih sebagai algoritma utama karena menghasilkan pengelompokan yang stabil dan mudah diinterpretasikan.
 
 ---
 
 ## 🛠️ Tech Stack
 
-🔌 **IoT Hardware**
-ESP32 DevKit • JSN-SR04T • GPS NEO-6M • Tong Sampah 50 L
-
-📡 **Communication**
-Wi-Fi • HTTPS • REST API • JSON
-
-🗄️ **Database & Storage**
-Supabase • PostgreSQL • Supabase Storage
-
-🧠 **Artificial Intelligence**
-Python • Clustering
-
-🖥️ **Web Dashboard**
-React.js
-
-🗺️ **Mapping**
-Leaflet.js • OpenStreetMap
-
----
-
-## 📱 Pelaporan Warga
-
-Warga dapat menyampaikan laporan kondisi tempat sampah melalui satu QR Code umum SmartBin tanpa login.
-
-Warga dapat memilih ID tempat sampah, menentukan jenis laporan, menambahkan keterangan, serta mengunggah maksimal satu foto bukti secara opsional.
-
-Status laporan dapat dipantau melalui halaman publik tanpa menampilkan foto bukti maupun catatan internal.
-
----
-
-## 🚛 Pengangkutan Sampah
-
-Petugas Lapangan dapat mencatat konfirmasi setelah proses pengangkutan selesai.
-
-SmartBin menyimpan riwayat pengangkutan dan memberikan notifikasi apabila pengangkutan pada hari sebelumnya belum memiliki konfirmasi sesuai jadwal operasional.
-
-Notifikasi digunakan sebagai pengingat untuk melakukan pemeriksaan dan tindak lanjut, bukan sebagai bukti otomatis bahwa pengangkutan tidak dilakukan.
+🔌 **IoT Hardware:** ESP32 DevKit • JSN-SR04T • GPS NEO-6M • Tong Sampah 50 L  
+📡 **Communication:** Wi-Fi • HTTPS • REST API • JSON  
+🗄️ **Database & Storage:** Supabase • PostgreSQL • Supabase Storage  
+🧠 **Artificial Intelligence:** Python • K-Means Clustering  
+🖥️ **Web Dashboard:** React.js  
+🗺️ **Mapping:** Leaflet.js • OpenStreetMap  
 
 ---
 
 ## 👥 Pengguna Sistem
 
-👨‍👩‍👧 **Warga**
-Memantau informasi publik dan menyampaikan laporan tanpa login.
-
-👷 **Petugas Lapangan**
-Menangani laporan operasional, mengonfirmasi pengangkutan, dan memeriksa notifikasi.
-
-🧑‍💼 **Pengelola**
-Memantau kondisi tempat sampah, hasil clustering, laporan warga, dan kegiatan pengangkutan.
-
-🛠️ **Admin**
-Mengelola pengguna internal, data tempat sampah, lokasi, titik virtual, dan validasi laporan.
+👨‍👩‍👧 **Warga** — memantau informasi publik dan menyampaikan laporan tanpa login.  
+👷 **Petugas Lapangan** — menangani laporan dan mengonfirmasi pengangkutan.  
+🧑‍💼 **Pengelola** — memantau kondisi tempat sampah, clustering, laporan, dan pengangkutan.  
+🛠️ **Admin** — mengelola pengguna dan data sistem.
 
 ---
 
@@ -178,11 +91,9 @@ Mengelola pengguna internal, data tempat sampah, lokasi, titik virtual, dan vali
 
 ## ⚠️ Batasan Sistem
 
-SmartBin dikembangkan sebagai prototipe monitoring tempat sampah dengan satu tong fisik berkapasitas 50 liter dan delapan titik virtual.
+SmartBin dikembangkan sebagai prototipe dengan 1 tong fisik berkapasitas 50 liter dan 8 titik virtual.
 
-Sistem tidak digunakan untuk mengukur berat sampah, mengenali jenis sampah secara otomatis, melakukan pelacakan kendaraan secara real-time, maupun menentukan rute pengangkutan.
-
-Hasil clustering digunakan sebagai informasi pendukung monitoring dan evaluasi, bukan sebagai penentu otomatis prioritas pengangkutan.
+Sistem berfokus pada monitoring kondisi tempat sampah dan tidak mencakup pengukuran berat, pengenalan jenis sampah, pelacakan kendaraan secara real-time, maupun optimasi rute pengangkutan.
 
 ---
 
