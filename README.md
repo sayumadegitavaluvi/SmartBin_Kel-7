@@ -1,99 +1,60 @@
-# 🗑️ SmartBin
+# SmartBin
 
-> Sistem monitoring kondisi tempat sampah berbasis IoT untuk memantau tingkat kepenuhan, lokasi, pola akumulasi sampah, serta mendukung pelaporan warga dan pencatatan pengangkutan.
+**Sistem Monitoring Kondisi Tempat Sampah Berbasis IoT**
 
----
+SmartBin merupakan sistem berbasis Internet of Things (IoT) untuk memantau tingkat kepenuhan dan lokasi tempat sampah, menganalisis pola akumulasi sampah menggunakan *clustering*, serta mendukung pelaporan warga dan pengelolaan pengangkutan.
 
-## 🌱 Tentang SmartBin
+Proyek ini dikembangkan oleh Kelompok 7, Program Studi Teknologi Rekayasa Internet, Politeknik Negeri Lampung.
 
-SmartBin adalah sistem monitoring tempat sampah berbasis Internet of Things (IoT) yang menggunakan ESP32 DevKit, sensor ultrasonik waterproof JSN-SR04T, dan GPS NEO-6M untuk memantau tingkat kepenuhan dan lokasi tempat sampah.
+## Fitur Utama
 
-Data dikirim melalui Wi-Fi dan HTTPS REST API, disimpan pada Supabase PostgreSQL, kemudian ditampilkan melalui dashboard berbasis web.
+- **Monitoring:** Menampilkan tingkat kepenuhan, lokasi, dan waktu pembaruan tempat sampah.
+- **Peta Interaktif:** Menampilkan 9 titik monitoring, terdiri atas 1 tong fisik dan 8 titik virtual berbasis simulasi.
+- **Clustering:** Mengelompokkan lokasi berdasarkan pola historis akumulasi kepenuhan sampah menggunakan K-Means.
+- **Pelaporan Warga:** Melalui satu QR Code umum tanpa login, dengan lampiran maksimal satu foto opsional.
+- **Pengangkutan:** Pencatatan konfirmasi, riwayat, dan notifikasi jika pengangkutan hari sebelumnya belum dikonfirmasi.
+- **Hak Akses:** Pembatasan fitur berdasarkan peran pengguna (RBAC).
 
-SmartBin juga menerapkan clustering untuk mengelompokkan pola historis akumulasi kepenuhan sampah.
+## Teknologi dan Alur Sistem
 
----
+**IoT:** ESP32 DevKit, sensor JSN-SR04T, GPS NEO-6M.
 
-## ✨ Fitur Utama
+**Komunikasi:** Wi-Fi, HTTPS REST API, JSON.
 
-🗑️ Monitoring tingkat kepenuhan tempat sampah  
-📍 Monitoring lokasi tempat sampah  
-🗺️ Peta 9 titik monitoring: 1 fisik dan 8 virtual  
-🧠 Clustering pola akumulasi kepenuhan sampah  
-📱 Pelaporan warga melalui QR Code tanpa login  
-🚛 Konfirmasi dan riwayat pengangkutan  
-🔔 Notifikasi pengangkutan yang belum dikonfirmasi  
-👥 Hak akses berdasarkan peran  
+**Database:** Supabase PostgreSQL dan Supabase Storage.
 
----
+**AI:** Python dan K-Means Clustering sebagai algoritma utama.
 
-## ⚙️ Cara Kerja
+**Web:** React.js, Leaflet.js, OpenStreetMap.
 
-**Tempat Sampah 50 L**  
-↓  
-**JSN-SR04T + GPS NEO-6M**  
-↓  
-**ESP32 DevKit**  
-↓  
-**Wi-Fi + HTTPS REST API**  
-↓  
-**Supabase PostgreSQL**  
-↓  
-**Clustering**  
-↓  
-**Dashboard SmartBin**
+Alur pemantauan:
 
-Sensor JSN-SR04T digunakan untuk membaca jarak permukaan sampah sebagai dasar perhitungan tingkat kepenuhan, sedangkan GPS NEO-6M digunakan untuk memperoleh koordinat tong fisik.
+`Sensor & GPS → ESP32 → Wi-Fi/REST API → Supabase → Dashboard Web`
 
----
+Data historis diolah menggunakan K-Means dan hasil pengelompokannya ditampilkan pada dashboard.
 
-## 🧠 Artificial Intelligence
+## Pengguna Sistem
 
-SmartBin menguji tiga algoritma clustering:
+| Pengguna | Tanggung Jawab |
+|---|---|
+| **Warga**             | Melihat informasi publik dan membuat laporan tanpa login. |
+| **Petugas Lapangan**  | Menangani laporan operasional, mengonfirmasi pengangkutan, dan menerima notifikasi. |
+| **Pengelola**         | Memantau sistem, laporan, hasil clustering, serta menangani laporan kerusakan tong/IoT. |
+| **Admin**             | Mengelola akun, data tong, lokasi, dan validasi administratif laporan. |
 
-🔵 **K-Means**  
-🟣 **K-Medoids**  
-🟠 **DBSCAN**
+## Tim Pengembang
 
-Berdasarkan hasil evaluasi, K-Means dipilih sebagai algoritma utama karena menghasilkan pengelompokan yang stabil dan mudah diinterpretasikan.
+| Nama | Peran |
+|---|---|
+| Gadis Nirmala Sari       | Hardware Engineer |
+| Sayu Made Gita Valuvi    | Firmware & Communication Engineer |
+| Claudia Cyntia Bella     | Full Stack Engineer |
+| Naila Khansa Salsabilla  | Project Manager |
+| Yulia Roslina            | AI Engineer |
 
----
+## Batasan Sistem
 
-## 🛠️ Tech Stack
-
-🔌 **IoT Hardware:** ESP32 DevKit • JSN-SR04T • GPS NEO-6M • Tong Sampah 50 L  
-📡 **Communication:** Wi-Fi • HTTPS • REST API • JSON  
-🗄️ **Database & Storage:** Supabase • PostgreSQL • Supabase Storage  
-🧠 **Artificial Intelligence:** Python • K-Means Clustering  
-🖥️ **Web Dashboard:** React.js  
-🗺️ **Mapping:** Leaflet.js • OpenStreetMap  
-
----
-
-## 👥 Pengguna Sistem
-
-👨‍👩‍👧 **Warga** — memantau informasi publik dan menyampaikan laporan tanpa login.  
-👷 **Petugas Lapangan** — menangani laporan dan mengonfirmasi pengangkutan.  
-🧑‍💼 **Pengelola** — memantau kondisi tempat sampah, clustering, laporan, dan pengangkutan.  
-🛠️ **Admin** — mengelola pengguna dan data sistem.
-
----
-
-## 👥 Anggota Kelompok
-
-1. Gadis Nirmala Sari — 24782010 — Hardware Engineer
-2. Sayu Made Gita Valuvi — 24782030 — Firmware & Communication Engineer
-3. Claudia Cyntia Bella — 24782040 — Full Stack Engineer
-4. Naila Khansa Salsabilla — 24782056 — Project Manager
-5. Yulia Roslina — 24782065 — AI Engineer
-
----
-
-## ⚠️ Batasan Sistem
-
-SmartBin dikembangkan sebagai prototipe dengan 1 tong fisik berkapasitas 50 liter dan 8 titik virtual.
-
-Sistem berfokus pada monitoring kondisi tempat sampah dan tidak mencakup pengukuran berat, pengenalan jenis sampah, pelacakan kendaraan secara real-time, maupun optimasi rute pengangkutan.
+SmartBin merupakan prototipe dengan **1 tong fisik berkapasitas 50 liter dan 8 titik virtual**. Sistem tidak mencakup pengukuran berat sampah, identifikasi jenis sampah otomatis, pelacakan kendaraan real-time, maupun optimasi rute pengangkutan.
 
 ---
 
