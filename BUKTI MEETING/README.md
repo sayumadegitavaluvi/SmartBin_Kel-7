@@ -1,4 +1,4 @@
-﻿# 📂 Bukti Meeting SmartBin
+# 📂 Bukti Meeting SmartBin
 
 Seluruh dokumentasi video meeting SmartBin disimpan pada Google Drive berikut:
 
@@ -6,4 +6,6 @@ Seluruh dokumentasi video meeting SmartBin disimpan pada Google Drive berikut:
 
 ## Daftar Meeting
 
-- MEET-001
+* MEET-001
+* MEET-002
+
