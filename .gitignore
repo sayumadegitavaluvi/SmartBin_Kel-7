@@ -1,1 +1,30 @@
+# Video
 *.mp4
+
+# Secrets and environment variables
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.smartbin-device-token
+
+# Python / Django
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+db.sqlite3
+*.sqlite3
+
+# Node.js / React
+node_modules/
+dist/
+dist-ssr/
+*.local
+*.log
+
+# macOS / editors
+.DS_Store
+.idea/
+.vscode/
