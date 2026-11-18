@@ -1,0 +1,25 @@
+# SmartBin - File rahasia
+.env
+.env.*
+!.env.example
+
+# Backup sementara
+*.bak
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+db.sqlite3
+
+# Node.js dan hasil build
+node_modules/
+dist/
+dist-ssr/
+
+# Sistem operasi dan editor
+.DS_Store
+.idea/
+.vscode/
+*.log

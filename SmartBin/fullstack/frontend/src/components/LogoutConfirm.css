@@ -1,0 +1,125 @@
+/* SMARTBIN S6-50: Modal Konfirmasi Logout */
+
+.smartbin-logout-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background: rgba(9, 35, 25, 0.55);
+  backdrop-filter: blur(4px);
+}
+
+.smartbin-logout-dialog {
+  width: 100%;
+  max-width: 410px;
+  box-sizing: border-box;
+  padding: 32px;
+  border: 1px solid var(--sb-border, #e3ece6);
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 24px 65px rgba(0, 40, 25, 0.2);
+  text-align: center;
+  animation: smartbin-logout-enter 0.2s ease-out;
+}
+
+.smartbin-logout-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  background: var(--sb-green-soft, #e6f5eb);
+  color: var(--sb-emerald, #006b49);
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.smartbin-logout-dialog h2 {
+  margin: 0 0 12px;
+  color: var(--sb-text, #173b2c);
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.smartbin-logout-dialog p {
+  margin: 0 0 28px;
+  color: var(--sb-muted, #667a70);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.smartbin-logout-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.smartbin-logout-actions button {
+  flex: 1;
+  min-height: 46px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.smartbin-logout-cancel {
+  border: 1px solid #d5e4da;
+  background: #f5faf7;
+  color: #24513a;
+}
+
+.smartbin-logout-cancel:hover:not(:disabled) {
+  background: #e6f5eb;
+}
+
+.smartbin-logout-confirm {
+  border: 1px solid #006b49;
+  background: var(--sb-emerald, #006b49);
+  color: #ffffff;
+}
+
+.smartbin-logout-confirm:hover:not(:disabled) {
+  background: #00593e;
+}
+
+.smartbin-logout-actions button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+@keyframes smartbin-logout-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 480px) {
+  .smartbin-logout-dialog {
+    padding: 26px 20px;
+  }
+
+  .smartbin-logout-actions {
+    flex-direction: column-reverse;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .smartbin-logout-dialog {
+    animation: none;
+  }
+}

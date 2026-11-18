@@ -1,0 +1,286 @@
+.rp-page {
+  display: grid;
+  gap: 22px;
+}
+
+.rp-hero {
+  position: relative;
+  padding: 30px;
+  border: 1px solid #e1ece5;
+  border-radius: 22px;
+  background: linear-gradient(
+    110deg,
+    #ffffff 0%,
+    #e4f6eb 62%,
+    #fff0df 100%
+  );
+}
+
+.rp-eyebrow {
+  color: #c56529;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+}
+
+.rp-hero h1 {
+  margin: 12px 0;
+  color: #07583b;
+  font-size: clamp(25px, 3vw, 36px);
+}
+
+.rp-hero p {
+  max-width: 650px;
+  margin: 0;
+  color: #61766a;
+  line-height: 1.6;
+}
+
+.rp-hero-tag {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 8px 13px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #087a50;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.rp-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.rp-stat {
+  display: grid;
+  gap: 7px;
+  padding: 21px;
+  background: #ffffff;
+  border: 1px solid #e2ebe5;
+  border-radius: 17px;
+  box-shadow: 0 7px 22px rgba(0, 74, 49, 0.05);
+}
+
+.rp-stat span {
+  color: #5d7366;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.rp-stat strong {
+  color: #087a50;
+  font-size: 32px;
+}
+
+.rp-stat small {
+  color: #77877b;
+}
+
+.rp-stat:nth-child(3) strong {
+  color: #c56529;
+}
+
+.rp-panel {
+  min-width: 0;
+  padding: 26px;
+  background: #ffffff;
+  border: 1px solid #e2ebe5;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 74, 49, 0.05);
+}
+
+.rp-heading,
+.rp-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.rp-heading h2 {
+  margin: 0 0 7px;
+  color: #164c35;
+}
+
+.rp-heading p,
+.rp-actions span {
+  margin: 0;
+  color: #6e8073;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.rp-count {
+  padding: 8px 13px;
+  border-radius: 999px;
+  background: #e8f6ed;
+  color: #087b50;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.rp-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+  margin: 25px 0 18px;
+}
+
+.rp-search,
+.rp-field {
+  display: grid;
+  gap: 8px;
+}
+
+.rp-search {
+  flex: 2;
+  min-width: 210px;
+}
+
+.rp-field {
+  flex: 1;
+  min-width: 155px;
+}
+
+.rp-toolbar label {
+  color: #385b44;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.rp-toolbar input,
+.rp-toolbar select {
+  width: 100%;
+  min-width: 0;
+  padding: 12px 14px;
+  background: #fbfdfb;
+  border: 1px solid #dbe7de;
+  border-radius: 11px;
+  color: #1c4230;
+  font: inherit;
+}
+
+.rp-actions {
+  margin-bottom: 20px;
+}
+
+.rp-actions button {
+  border: 0;
+  padding: 12px 17px;
+  border-radius: 11px;
+  background: #087b50;
+  color: #ffffff;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.rp-actions button:hover:not(:disabled) {
+  background: #066440;
+}
+
+.rp-actions button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.rp-table-wrapper {
+  overflow-x: auto;
+  border: 1px solid #e3ece5;
+  border-radius: 13px;
+}
+
+.rp-table {
+  width: 100%;
+  min-width: 950px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.rp-table th,
+.rp-table td {
+  padding: 14px;
+  border-bottom: 1px solid #ecf1ed;
+  font-size: 13px;
+  vertical-align: top;
+}
+
+.rp-table thead th {
+  background: #f4faf6;
+  color: #315941;
+}
+
+.rp-table tbody th {
+  color: #11583a;
+  white-space: nowrap;
+}
+
+.rp-table td {
+  color: #40574a;
+}
+
+.rp-fill {
+  color: #087b50;
+  white-space: nowrap;
+}
+
+.rp-status {
+  display: block;
+  color: #52694f;
+  font-weight: 700;
+}
+
+.rp-table td small {
+  display: block;
+  margin-top: 5px;
+  color: #7b887f;
+  line-height: 1.5;
+}
+
+.rp-note,
+.rp-empty {
+  margin: 20px 0 0;
+  color: #697c70;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.rp-empty {
+  padding: 25px;
+  background: #f8fcf9;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.rp-error {
+  color: #ae3434;
+}
+
+@media (max-width: 1000px) {
+  .rp-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .rp-hero,
+  .rp-panel {
+    padding: 20px;
+  }
+
+  .rp-stats {
+    gap: 10px;
+  }
+
+  .rp-stat {
+    padding: 15px;
+  }
+
+  .rp-actions button {
+    width: 100%;
+  }
+}
