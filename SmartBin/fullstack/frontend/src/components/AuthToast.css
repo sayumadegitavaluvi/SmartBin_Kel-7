@@ -1,0 +1,104 @@
+/* S6-50: Notifikasi autentikasi SmartBin */
+
+.smartbin-auth-toast {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: min(380px, calc(100vw - 32px));
+  box-sizing: border-box;
+  padding: 16px;
+  border: 1px solid #bbf7d0;
+  border-left: 4px solid #16a34a;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.14);
+  animation: smartbin-toast-enter 0.25s ease-out;
+}
+
+.smartbin-auth-toast.error {
+  border-color: #fecaca;
+  border-left-color: #dc2626;
+}
+
+.smartbin-auth-toast-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #dcfce7;
+  color: #15803d;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.smartbin-auth-toast.error .smartbin-auth-toast-icon {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.smartbin-auth-toast-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.smartbin-auth-toast-content strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #0f172a;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.smartbin-auth-toast-content p {
+  margin: 0;
+  color: #475569;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.smartbin-auth-toast-close {
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.smartbin-auth-toast-close:hover {
+  color: #0f172a;
+}
+
+@keyframes smartbin-toast-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .smartbin-auth-toast {
+    top: 16px;
+    right: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .smartbin-auth-toast {
+    animation: none;
+  }
+}

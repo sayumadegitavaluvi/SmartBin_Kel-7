@@ -161,6 +161,40 @@ def receive_monitoring(request):
     ):
         return Response({"error": "Invalid sensor data"}, status=400)
 
+    gps_data = {}
+
+    has_latitude = "latitude" in payload
+    has_longitude = "longitude" in payload
+
+    if has_latitude != has_longitude:
+        return Response(
+            {"error": "Latitude and longitude must be provided together"},
+            status=400,
+        )
+
+    if has_latitude and has_longitude:
+        latitude = payload["latitude"]
+        longitude = payload["longitude"]
+
+        if (
+            type(latitude) not in (int, float)
+            or type(longitude) not in (int, float)
+            or not math.isfinite(latitude)
+            or not math.isfinite(longitude)
+            or not -90 <= latitude <= 90
+            or not -180 <= longitude <= 180
+            or (latitude == 0 and longitude == 0)
+        ):
+            return Response(
+                {"error": "Invalid GPS coordinates"},
+                status=400,
+            )
+
+        gps_data = {
+            "latitude": latitude,
+            "longitude": longitude,
+        }
+
     edge_url = os.getenv("SUPABASE_EDGE_FUNCTION_URL")
 
     if not edge_url:
@@ -176,6 +210,7 @@ def receive_monitoring(request):
                 "device_id": device_id,
                 "distance_cm": distance_cm,
                 "fill_percent": fill_percent,
+                **gps_data,
             },
             headers={
                 "x-device-token": token,

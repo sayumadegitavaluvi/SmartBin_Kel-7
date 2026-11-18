@@ -477,3 +477,377 @@
     padding: 18px;
   }
 }
+
+/* S6-43: Indikator kesegaran data monitoring */
+.freshness-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  margin-top: 12px;
+  width: 100%;
+}
+
+.freshness-badge {
+  display: inline-block;
+  padding: 6px 11px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.freshness-badge.fresh {
+  background: #e2f4e7;
+  color: #17683b;
+}
+
+.freshness-badge.stale {
+  background: #fff0d9;
+  color: #a65a00;
+}
+
+.freshness-badge.simulation {
+  background: #e9edf5;
+  color: #52627c;
+}
+
+.freshness-badge.empty,
+.freshness-badge.unknown {
+  background: #f1f1f1;
+  color: #666666;
+}
+
+.freshness-info small {
+  font-size: 11px;
+  color: #758179;
+}
+
+/* S6-44: Leaflet Map */
+.bin-map-wrapper {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+}
+
+.bin-location-map {
+  width: 100%;
+  height: 320px;
+  border-radius: 14px;
+  border: 1px solid #e5ebe6;
+}
+
+.bin-map-information {
+  padding: 14px 4px;
+  font-size: 12px;
+  color: #526456;
+}
+
+.bin-map-information p {
+  margin-top: 6px;
+  line-height: 1.6;
+}
+
+.bin-map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 8px 4px;
+  font-size: 12px;
+  color: #506456;
+}
+
+/* ====================================
+   SMARTBIN - MAP UI/UX S6-44
+==================================== */
+
+.sb-map-shell {
+  width: 100%;
+  min-width: 0;
+}
+
+.sb-map-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.sb-map-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #23573a;
+}
+
+.sb-map-count-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #29864a;
+}
+
+.sb-map-actions {
+  display: flex;
+  gap: 7px;
+}
+
+.sb-map-actions button {
+  border: 1px solid #dce9df;
+  background: #fff;
+  color: #245b3b;
+  padding: 9px 11px;
+  border-radius: 9px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.sb-map-actions button:hover:not(:disabled) {
+  background: #edf6ef;
+  border-color: #b6d8bd;
+}
+
+.sb-map-actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.sb-map-actions button:focus-visible {
+  outline: 3px solid #9bc9aa;
+  outline-offset: 2px;
+}
+
+.sb-map-canvas {
+  width: 100%;
+  height: 420px;
+  border: 1px solid #e3ebe5;
+  border-radius: 16px;
+  z-index: 0;
+}
+
+.sb-map-shell.expanded .sb-map-canvas {
+  height: 560px;
+}
+
+/* Marker kecil SmartBin */
+
+.sb-map-icon-host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+}
+
+.sb-map-marker {
+  display: block;
+  box-sizing: border-box;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  transition: transform 0.18s ease;
+}
+
+.sb-map-marker.physical {
+  background: #207a48;
+}
+
+.sb-map-marker.virtual {
+  background: #286be4;
+}
+
+.sb-map-icon-host:hover .sb-map-marker {
+  transform: scale(1.3);
+}
+
+/* Popup lebih ringkas */
+
+.sb-map-popup .leaflet-popup-content-wrapper {
+  border-radius: 15px;
+  box-shadow: 0 7px 25px rgba(19, 48, 31, 0.16);
+}
+
+.sb-map-popup .leaflet-popup-content {
+  margin: 15px;
+  line-height: 1.5;
+}
+
+.sb-popup-content {
+  color: #183c29;
+  font-family: inherit;
+}
+
+.sb-popup-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-right: 15px;
+}
+
+.sb-popup-heading strong {
+  font-size: 15px;
+}
+
+.sb-popup-type {
+  display: inline-block;
+  border-radius: 20px;
+  padding: 4px 8px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.sb-popup-type.physical {
+  background: #e4f3e9;
+  color: #207a48;
+}
+
+.sb-popup-type.virtual {
+  background: #e7efff;
+  color: #286be4;
+}
+
+.sb-popup-location {
+  margin-top: 9px;
+  font-size: 12px;
+  color: #617568;
+  line-height: 1.5;
+}
+
+.sb-popup-divider {
+  height: 1px;
+  background: #e8ede9;
+  margin: 12px 0;
+}
+
+.sb-popup-caption {
+  display: block;
+  color: #7a8b80;
+  font-size: 11px;
+}
+
+.sb-popup-percent {
+  display: block;
+  color: #173f29;
+  font-size: 25px;
+  margin-top: 3px;
+  line-height: 1.3;
+}
+
+.sb-popup-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 12px;
+  font-size: 10px;
+  color: #758579;
+}
+
+/* Legenda dan petunjuk */
+
+.sb-map-bottom {
+  padding-top: 15px;
+}
+
+.sb-map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.sb-map-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #536a59;
+}
+
+.sb-legend-dot {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border-radius: 4px;
+}
+
+.sb-legend-dot.physical {
+  background: #207a48;
+}
+
+.sb-legend-dot.virtual {
+  background: #286be4;
+}
+
+.sb-map-help {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.7;
+  color: #859188;
+}
+
+@media (max-width: 600px) {
+  .sb-map-canvas {
+    height: 350px;
+  }
+
+  .sb-map-shell.expanded .sb-map-canvas {
+    height: 480px;
+  }
+
+  .sb-map-toolbar {
+    align-items: flex-start;
+  }
+
+  .sb-map-actions button {
+    padding: 8px 10px;
+  }
+}
+
+/* S6-50: Tombol autentikasi pada header SmartBin */
+.auth-header-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 7px 14px;
+  margin-left: 8px;
+  border: 1px solid #087f5b;
+  border-radius: 9px;
+  background: #087f5b;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.auth-header-button:hover {
+  background: #065f46;
+  border-color: #065f46;
+  transform: translateY(-1px);
+}
+
+.auth-header-button:focus-visible {
+  outline: 3px solid rgba(8, 127, 91, 0.25);
+  outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+  .auth-header-button {
+    padding: 7px 10px;
+    font-size: 12px;
+    margin-left: 4px;
+  }
+}
