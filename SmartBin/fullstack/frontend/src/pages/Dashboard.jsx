@@ -5,6 +5,7 @@ import PublicClusteringSection from '../components/PublicClusteringSection';
 import MonitoringPage from './MonitoringPage';
 import HistoryPage from './HistoryPage';
 import ReportPage from './ReportPage';
+import CitizenReportPage from './CitizenReportPage';
 import LocationAnalysisPage from './LocationAnalysisPage';
 import { useEffect, useState } from 'react';
 import { getAllLatestBinsMonitoring } from '../services/monitoringService';
@@ -16,6 +17,7 @@ const menuItems = [
   { icon: '▥', label: 'Riwayat Data' },
   { icon: '⌖', label: 'Analisis Lokasi' },
   { icon: '▧', label: 'Laporan' },
+  { icon: '!', label: 'Lapor Masalah' },
 ];
 
 function formatPercent(value) {
@@ -140,6 +142,40 @@ function Dashboard({ profile, onLogin, onLogout }) {
           </div>
         </div>
       </aside>
+
+      <nav className="mobile-bottom-nav" aria-label="Navigasi utama mobile">
+        {menuItems.map((item) => {
+          const shortLabels = {
+            Dashboard: 'Beranda',
+            Monitoring: 'Monitor',
+            'Riwayat Data': 'Riwayat',
+            'Analisis Lokasi': 'Lokasi',
+            Laporan: 'Laporan',
+            'Lapor Masalah': 'Lapor',
+          };
+
+          return (
+            <button
+              key={item.label}
+              type="button"
+              title={item.label}
+              aria-label={item.label}
+              aria-current={activeMenu === item.label ? 'page' : undefined}
+              className={`mobile-nav-item ${
+                activeMenu === item.label ? 'active' : ''
+              }`}
+              onClick={() => setActiveMenu(item.label)}
+            >
+              <span className="mobile-nav-icon">
+                <SidebarMenuIcon name={item.label} />
+              </span>
+              <span className="mobile-nav-label">
+                {shortLabels[item.label] || item.label}
+              </span>
+            </button>
+          );
+        })}
+      </nav>
 
       <div className="main-area">
         <div className="topbar">
@@ -407,6 +443,8 @@ function Dashboard({ profile, onLogin, onLogout }) {
               </div>
             </div>
                       </>
+          ) : activeMenu === 'Lapor Masalah' ? (
+            <CitizenReportPage bins={bins} />
           ) : activeMenu === 'Laporan' ? (
             <ReportPage
               bins={bins}

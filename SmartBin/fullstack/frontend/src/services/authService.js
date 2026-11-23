@@ -64,8 +64,19 @@ export async function getInternalProfile() {
   });
 
   if (!response.ok) {
+    let detail = "";
+
+    try {
+      const body = await response.json();
+      detail = typeof body.detail === "string" ? body.detail : "";
+    } catch {
+      // Respons bukan JSON.
+    }
+
     throw new Error(
-      `Verifikasi pengguna gagal (HTTP ${response.status}).`
+      detail
+        ? `Verifikasi pengguna gagal (HTTP ${response.status}): ${detail}`
+        : `Verifikasi pengguna gagal (HTTP ${response.status}).`
     );
   }
 

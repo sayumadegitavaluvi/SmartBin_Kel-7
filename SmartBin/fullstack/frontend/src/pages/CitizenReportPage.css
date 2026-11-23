@@ -1,0 +1,395 @@
+
+.citizen-report {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 42px 0 64px;
+  color: #174b37;
+}
+
+.citizen-report > header {
+  padding: 36px 40px;
+  border: 1px solid #dceae1;
+  border-radius: 26px;
+  background: linear-gradient(115deg, #eff9f3, #fff1e2);
+  margin-bottom: 26px;
+}
+
+.citizen-report-eyebrow {
+  margin: 0 0 16px;
+  color: #c35c1f;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+}
+
+.citizen-report h1 {
+  margin: 0 0 14px;
+  color: #075b3d;
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.citizen-report header > p:last-child {
+  max-width: 690px;
+  margin: 0;
+  color: #60786b;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.citizen-report-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 820px;
+  padding: 36px 40px;
+  background: #ffffff;
+  border: 1px solid #e0eae4;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(21, 80, 53, 0.05);
+}
+
+.citizen-report-form label {
+  margin-top: 8px;
+  color: #24553f;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.citizen-report-form input,
+.citizen-report-form select,
+.citizen-report-form textarea {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: 13px 15px;
+  border: 1px solid #d4e3d9;
+  border-radius: 11px;
+  background: #fbfdfb;
+  color: #203e30;
+  font: inherit;
+  font-size: 14px;
+  outline-offset: 3px;
+}
+
+.citizen-report-form input:focus,
+.citizen-report-form select:focus,
+.citizen-report-form textarea:focus {
+  border-color: #00845b;
+  outline: 2px solid #c8eadd;
+}
+
+.citizen-report-form textarea {
+  min-height: 125px;
+  resize: vertical;
+}
+
+.citizen-report-form > p {
+  margin: 10px 0 0;
+  padding: 13px 16px;
+  border-radius: 10px;
+  background: #f0f7f3;
+  color: #466a56;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.citizen-report-form button {
+  align-self: flex-start;
+  margin-top: 8px;
+  padding: 13px 24px;
+  border: 0;
+  border-radius: 11px;
+  background: #e4ebe6;
+  color: #728c7d;
+  font: inherit;
+  font-weight: 700;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .citizen-report {
+    padding: 24px 0 40px;
+  }
+
+  .citizen-report > header,
+  .citizen-report-form {
+    padding: 24px 20px;
+    border-radius: 18px;
+  }
+}
+
+
+/* SMARTBIN CITIZEN REPORT ENHANCEMENTS S6-52 */
+
+.citizen-report-form h2 {
+  margin: 0;
+  color: #075b3d;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.citizen-report-form .cr-form-description {
+  margin: 0 0 12px;
+  padding: 0;
+  background: transparent;
+  color: #6a8174;
+  font-size: 14px;
+}
+
+.cr-role-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 2px 0 8px;
+  padding: 16px 18px;
+  border: 1px solid #bfe6d1;
+  border-radius: 12px;
+  background: #effaf3;
+  color: #176344;
+}
+
+.cr-role-info strong {
+  font-size: 14px;
+}
+
+.cr-role-info span {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.cr-photo-section {
+  margin-top: 14px;
+  padding: 24px;
+  border: 1px dashed #bad9c6;
+  border-radius: 16px;
+  background: #f8fcf9;
+}
+
+.cr-photo-section h3 {
+  margin: 0 0 8px;
+  color: #075b3d;
+  font-size: 17px;
+}
+
+.cr-photo-section > p {
+  margin: 0 0 18px;
+  color: #6a8174;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.cr-photo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.citizen-report-form .cr-photo-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 12px 20px;
+  border: 1px solid #087d55;
+  border-radius: 11px;
+  background: #087d55;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.citizen-report-form .cr-photo-button:hover {
+  background: #056341;
+}
+
+.citizen-report-form .cr-photo-secondary {
+  background: #ffffff;
+  color: #087d55;
+}
+
+.citizen-report-form .cr-photo-secondary:hover {
+  background: #edf8f1;
+}
+
+.cr-photo-actions input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.cr-photo-preview {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #dce9df;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.cr-photo-preview img {
+  width: 130px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 9px;
+}
+
+.cr-photo-preview > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+}
+
+.cr-photo-preview span {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  color: #335b45;
+  font-size: 13px;
+}
+
+.citizen-report-form .cr-photo-preview button {
+  margin: 0;
+  padding: 9px 14px;
+  background: #fff0e8;
+  color: #bd5626;
+  cursor: pointer;
+}
+
+.citizen-report-form .cr-photo-preview button:hover {
+  background: #ffe2d1;
+}
+
+.citizen-report-form .cr-development-note {
+  margin: 12px 0 0;
+}
+
+.cr-photo-actions input[type="file"]:focus-visible + label {
+  outline: 2px solid #087d55;
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .cr-photo-section {
+    padding: 18px;
+  }
+
+  .cr-photo-actions {
+    flex-direction: column;
+  }
+
+  .cr-photo-actions .cr-photo-button {
+    width: 100%;
+  }
+
+  .cr-photo-preview {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cr-photo-preview img {
+    width: 100%;
+    height: auto;
+    max-height: 240px;
+  }
+}
+
+
+/* SMARTBIN LIVE CAMERA S6-52 */
+
+.citizen-report-form .cr-camera-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 12px 20px;
+  border: 1px solid #087d55;
+  border-radius: 11px;
+  background: #087d55;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.citizen-report-form .cr-camera-trigger:hover {
+  background: #056341;
+}
+
+.cr-camera-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 18px;
+  padding: 16px;
+  border: 1px solid #dce9df;
+  border-radius: 14px;
+  background: #ffffff;
+}
+
+.cr-camera-panel video {
+  display: block;
+  width: 100%;
+  max-height: 380px;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  border-radius: 10px;
+  background: #10251b;
+}
+
+.cr-camera-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.citizen-report-form .cr-camera-controls button {
+  margin: 0;
+  padding: 11px 18px;
+  border-radius: 10px;
+  background: #087d55;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.citizen-report-form .cr-camera-controls button:last-child {
+  background: #fff0e8;
+  color: #b65325;
+}
+
+.citizen-report-form .cr-camera-error {
+  margin: 12px 0 0;
+  padding: 12px 14px;
+  border: 1px solid #f4c9b7;
+  border-radius: 10px;
+  background: #fff3ed;
+  color: #a83e23;
+  font-size: 13px;
+}
+
+@media (max-width: 600px) {
+  .citizen-report-form .cr-camera-trigger,
+  .citizen-report-form .cr-camera-controls button {
+    width: 100%;
+  }
+
+  .cr-camera-controls {
+    flex-direction: column;
+  }
+
+  .cr-camera-panel {
+    padding: 12px;
+  }
+}

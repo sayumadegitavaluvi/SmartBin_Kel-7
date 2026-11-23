@@ -1,3 +1,5 @@
+import { supabase } from '../lib/supabase';
+
 const CLUSTERING_ENDPOINT = '/api/clustering/predict/';
 
 export async function predictClustering(
@@ -12,9 +14,22 @@ export async function predictClustering(
     throw new Error('Masukkan 1 sampai 100 data pengujian.');
   }
 
+  const { data, error } = await supabase.auth.getSession();
+
+  if (error) {
+    throw new Error('Gagal membaca sesi login.');
+  }
+
+  const token = data.session?.access_token;
+
+  if (!token) {
+    throw new Error('Sesi login tidak tersedia. Silakan login kembali.');
+  }
+
   const headers = {
     Accept: 'application/json',
     'Content-Type': 'application/json',
+    Authorization: `Bearer ${token}`,
   };
 
   if (csrfToken) {
